@@ -1,0 +1,58 @@
+<div class="columns">
+  
+  <div class="column">
+    <app-card
+     [name]="cardForm.controls['name']['value']"
+     [cardNumber]="cardForm.controls['cardNumber']['value']"
+     [expiration]="cardForm.controls['expiration']['value']"
+    ></app-card>
+  </div>
+  <div class="column">
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    
+      <app-input label="Name" [control]="cardForm.controls['name']"></app-input>
+      <app-input [mask]="'0000-0000-0000-0000'" label="Card Number" [control]="cardForm.controls['cardNumber']"></app-input>
+      <div class="columns">
+        <div class="column">
+          <app-input label="Expiration" [control]="cardForm.controls['expiration']"></app-input>
+        </div>
+        <div class="column">
+          <app-input label="Security Code" [control]="cardForm.controls['securityCode']"></app-input>
+        </div>
+    
+    
+      </div>
+    
+    
+      <!-- <ng-container *ngIf="cardForm.controls['name'].errors && cardForm.controls['name'].errors['minlength'] ">
+        <div
+          *ngIf="cardForm.controls['name'].errors['minlength']['actualLength']!= cardForm.controls['name'].errors['minlength']['requiredLength'] ">
+          value should be atleast of 3 letters
+        </div>
+      </ng-container> -->
+    
+    
+      <!-- <input formControlName="email"> -->
+      <div class="buttons">
+        <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Submit</button>
+        <button class="button is-warning" (click)="onClick()" type="button">Reset</button>
+      </div>
+    
+    </form>
+  </div>
+</div>
+
+
+
+
+<!-- <div>Form Content : {{cardForm.value | json}}</div>
+<div>Form is valid : {{cardForm.valid }}</div>
+<div>Form errors : {{cardForm.controls['name'].errors | json }}</div> -->
+
+
+
+
+<!-- <ng-container *ngIf="cardForm.controls['name'].errors">
+  <small *ngIf="cardForm.controls['name'].errors['required']">Value is required</small>
+  <small *ngIf="cardForm.controls['name'].errors['minlength']">Value must be longer</small>
+</ng-container> -->
